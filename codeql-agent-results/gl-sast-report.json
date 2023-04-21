@@ -1,0 +1,321 @@
+{
+    "version": "14.0.0",
+    "vulnerabilities": [
+        {
+            "id": "226dd0d2f4ec45f397fa0c4909ef0e88",
+            "category": "sast",
+            "cve": "226dd0d2f4ec45f397fa0c4909ef0e88",
+            "message": "Use of a cryptographic algorithm with insufficient key size",
+            "description": "Using cryptographic algorithms with too small a key size can allow an attacker to compromise security.",
+            "severity": "High",
+            "confidence": "High",
+            "scanner": {
+                "id": "codeql",
+                "name": "CodeQL"
+            },
+            "location": {
+                "file": "src/main/java/demo/security/util/Utils.java",
+                "start_line": 23,
+                "end_line": 23
+            },
+            "identifiers": [
+                {
+                    "type": "codeql_query_id",
+                    "name": "java/insufficient-key-size",
+                    "value": "java/insufficient-key-size"
+                }
+            ]
+        },
+        {
+            "id": "1f9c2976d1454ac9aa5f41a75084ddf5",
+            "category": "sast",
+            "cve": "1f9c2976d1454ac9aa5f41a75084ddf5",
+            "message": "Query built from user-controlled sources",
+            "description": "Building a SQL or Java Persistence query from user-controlled sources is vulnerable to insertion of malicious code by the user.",
+            "severity": "High",
+            "confidence": "High",
+            "scanner": {
+                "id": "codeql",
+                "name": "CodeQL"
+            },
+            "location": {
+                "file": "src/main/java/demo/security/util/DBUtils.java",
+                "start_line": 19,
+                "end_line": 19
+            },
+            "identifiers": [
+                {
+                    "type": "codeql_query_id",
+                    "name": "java/sql-injection",
+                    "value": "java/sql-injection"
+                }
+            ]
+        },
+        {
+            "id": "96e42cc23eeb4debb93d98bdd50e0a5e",
+            "category": "sast",
+            "cve": "96e42cc23eeb4debb93d98bdd50e0a5e",
+            "message": "Query built from user-controlled sources",
+            "description": "Building a SQL or Java Persistence query from user-controlled sources is vulnerable to insertion of malicious code by the user.",
+            "severity": "High",
+            "confidence": "High",
+            "scanner": {
+                "id": "codeql",
+                "name": "CodeQL"
+            },
+            "location": {
+                "file": "src/main/java/demo/security/servlet/Insecure.java",
+                "start_line": 38,
+                "end_line": 38
+            },
+            "identifiers": [
+                {
+                    "type": "codeql_query_id",
+                    "name": "java/sql-injection",
+                    "value": "java/sql-injection"
+                }
+            ]
+        },
+        {
+            "id": "7e663d50a8be408ca9c9581ad7db8f98",
+            "category": "sast",
+            "cve": "7e663d50a8be408ca9c9581ad7db8f98",
+            "message": "Uncontrolled data used in path expression",
+            "description": "Accessing paths influenced by users can allow an attacker to access unexpected resources.",
+            "severity": "High",
+            "confidence": "High",
+            "scanner": {
+                "id": "codeql",
+                "name": "CodeQL"
+            },
+            "location": {
+                "file": "src/main/java/demo/security/util/Utils.java",
+                "start_line": 31,
+                "end_line": 31
+            },
+            "identifiers": [
+                {
+                    "type": "codeql_query_id",
+                    "name": "java/path-injection",
+                    "value": "java/path-injection"
+                }
+            ]
+        },
+        {
+            "id": "79614540793b409eaf116ef67293ad7d",
+            "category": "sast",
+            "cve": "79614540793b409eaf116ef67293ad7d",
+            "message": "Uncontrolled data used in path expression",
+            "description": "Accessing paths influenced by users can allow an attacker to access unexpected resources.",
+            "severity": "High",
+            "confidence": "High",
+            "scanner": {
+                "id": "codeql",
+                "name": "CodeQL"
+            },
+            "location": {
+                "file": "src/main/java/demo/security/servlet/Insecure.java",
+                "start_line": 31,
+                "end_line": 31
+            },
+            "identifiers": [
+                {
+                    "type": "codeql_query_id",
+                    "name": "java/path-injection",
+                    "value": "java/path-injection"
+                }
+            ]
+        },
+        {
+            "id": "09bb2d0166fb47a6959cb13bdc81e157",
+            "category": "sast",
+            "cve": "09bb2d0166fb47a6959cb13bdc81e157",
+            "message": "Deserialization of user-controlled data",
+            "description": "Deserializing user-controlled data may allow attackers to execute arbitrary code.",
+            "severity": "Critical",
+            "confidence": "High",
+            "scanner": {
+                "id": "codeql",
+                "name": "CodeQL"
+            },
+            "location": {
+                "file": "src/main/java/demo/security/servlet/Insecure.java",
+                "start_line": 26,
+                "end_line": 26
+            },
+            "identifiers": [
+                {
+                    "type": "codeql_query_id",
+                    "name": "java/unsafe-deserialization",
+                    "value": "java/unsafe-deserialization"
+                }
+            ]
+        },
+        {
+            "id": "871e49b225144fdfa44a42658466006e",
+            "category": "sast",
+            "cve": "871e49b225144fdfa44a42658466006e",
+            "message": "Cross-site scripting",
+            "description": "Writing user input directly to a web page allows for a cross-site scripting vulnerability.",
+            "severity": "Medium",
+            "confidence": "High",
+            "scanner": {
+                "id": "codeql",
+                "name": "CodeQL"
+            },
+            "location": {
+                "file": "src/main/java/demo/security/servlet/HomeServlet.java",
+                "start_line": 26,
+                "end_line": 26
+            },
+            "identifiers": [
+                {
+                    "type": "codeql_query_id",
+                    "name": "java/xss",
+                    "value": "java/xss"
+                }
+            ]
+        },
+        {
+            "id": "ccf93547701943c0b9ff69423baccddb",
+            "category": "sast",
+            "cve": "ccf93547701943c0b9ff69423baccddb",
+            "message": "Failure to use secure cookies",
+            "description": "Insecure cookies may be sent in cleartext, which makes them vulnerable to interception.",
+            "severity": "Medium",
+            "confidence": "High",
+            "scanner": {
+                "id": "codeql",
+                "name": "CodeQL"
+            },
+            "location": {
+                "file": "src/main/java/demo/security/util/WebUtils.java",
+                "start_line": 14,
+                "end_line": 14
+            },
+            "identifiers": [
+                {
+                    "type": "codeql_query_id",
+                    "name": "java/insecure-cookie",
+                    "value": "java/insecure-cookie"
+                }
+            ]
+        },
+        {
+            "id": "ab095c159dc548d69fed21b071fcfd85",
+            "category": "sast",
+            "cve": "ab095c159dc548d69fed21b071fcfd85",
+            "message": "Local information disclosure in a temporary directory",
+            "description": "Writing information without explicit permissions to a shared temporary directory may disclose it to other users.",
+            "severity": "Medium",
+            "confidence": "Medium",
+            "scanner": {
+                "id": "codeql",
+                "name": "CodeQL"
+            },
+            "location": {
+                "file": "src/main/java/demo/security/servlet/Insecure.java",
+                "start_line": 28,
+                "end_line": 28
+            },
+            "identifiers": [
+                {
+                    "type": "codeql_query_id",
+                    "name": "java/local-temp-file-or-directory-information-disclosure",
+                    "value": "java/local-temp-file-or-directory-information-disclosure"
+                }
+            ]
+        },
+        {
+            "id": "9a1c4f0692c4407997fd5d115ed527f2",
+            "category": "sast",
+            "cve": "9a1c4f0692c4407997fd5d115ed527f2",
+            "message": "Hard-coded credential in API call",
+            "description": "Using a hard-coded credential in a call to a sensitive Java API may compromise security.",
+            "severity": "Critical",
+            "confidence": "Medium",
+            "scanner": {
+                "id": "codeql",
+                "name": "CodeQL"
+            },
+            "location": {
+                "file": "src/main/java/demo/security/util/DBUtils.java",
+                "start_line": 13,
+                "end_line": 13
+            },
+            "identifiers": [
+                {
+                    "type": "codeql_query_id",
+                    "name": "java/hardcoded-credential-api-call",
+                    "value": "java/hardcoded-credential-api-call"
+                }
+            ]
+        },
+        {
+            "id": "b952e17f6c2d474fb4039959a4e745bb",
+            "category": "sast",
+            "cve": "b952e17f6c2d474fb4039959a4e745bb",
+            "message": "Hard-coded credential in API call",
+            "description": "Using a hard-coded credential in a call to a sensitive Java API may compromise security.",
+            "severity": "Critical",
+            "confidence": "Medium",
+            "scanner": {
+                "id": "codeql",
+                "name": "CodeQL"
+            },
+            "location": {
+                "file": "src/main/java/demo/security/util/DBUtils.java",
+                "start_line": 13,
+                "end_line": 13
+            },
+            "identifiers": [
+                {
+                    "type": "codeql_query_id",
+                    "name": "java/hardcoded-credential-api-call",
+                    "value": "java/hardcoded-credential-api-call"
+                }
+            ]
+        },
+        {
+            "id": "b2a4d14d692b47ab9b3fadc77f3d39e7",
+            "category": "sast",
+            "cve": "b2a4d14d692b47ab9b3fadc77f3d39e7",
+            "message": "Query built by concatenation with a possibly-untrusted string",
+            "description": "Building a SQL or Java Persistence query by concatenating a possibly-untrusted string is vulnerable to insertion of malicious code.",
+            "severity": "High",
+            "confidence": "Medium",
+            "scanner": {
+                "id": "codeql",
+                "name": "CodeQL"
+            },
+            "location": {
+                "file": "src/main/java/demo/security/util/DBUtils.java",
+                "start_line": 30,
+                "end_line": 30
+            },
+            "identifiers": [
+                {
+                    "type": "codeql_query_id",
+                    "name": "java/concatenated-sql-query",
+                    "value": "java/concatenated-sql-query"
+                }
+            ]
+        }
+    ],
+    "remediations": [],
+    "scan": {
+        "messages": [],
+        "scanner": {
+            "id": "codeql",
+            "name": "CodeQL",
+            "version": "2.12.6",
+            "vendor": {
+                "name": "GitHub"
+            }
+        },
+        "status": "success",
+        "type": "sast",
+        "start_time": "2023-04-21T11:48:39",
+        "end_time": "2023-04-21T11:48:39"
+    }
+}

@@ -1,0 +1,11 @@
+---
+sourceLocationPrefix: /opt/src
+baselineLinesOfCode: 262
+unicodeNewlines: false
+columnKind: utf16
+primaryLanguage: java
+creationMetadata:
+  sha: de7b227798c56590735acb7e9a59f751894cf13e
+  cliVersion: 2.12.6
+  creationTime: 2023-04-20T13:15:26.701662358Z
+finalised: true
