@@ -24,6 +24,7 @@ public class Insecure {
     ObjectMapper mapper = new ObjectMapper();
     mapper.enableDefaultTyping();
     String val = mapper.readValue(obj, String.class);
+    System.out.println(val);
     File tempDir;
     tempDir = File.createTempFile("", ".");
     tempDir.delete();
