@@ -16,6 +16,7 @@
     <sonar.projectName>Java Web App</sonar.projectName>
     <sonar.organization>jonathanvila</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    <dummy>one</dummy>
   </properties>
   <dependencies>
     <dependency>
