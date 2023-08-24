@@ -13,8 +13,6 @@ import java.nio.file.Paths;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import java.util.List;
 
 public class Utils {
 
@@ -40,21 +38,4 @@ public class Utils {
         engine.eval(input);
     }
 
-
-    public static void trim() {
-        String element = getElement(4);
-
-        System.out.println(element.trim());
-    }
-
-    private static String getElement(int i) {
-        List<String> myList = Arrays.asList("First ", "Second ", "Last ");
-        String element;
-        try {
-            element = myList.get(i);
-        } catch (Exception e) {
-            element = null;
-        }
-        return element;
-    }
 }
