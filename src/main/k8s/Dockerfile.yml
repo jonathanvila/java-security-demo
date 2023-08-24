@@ -1,4 +1,4 @@
 FROM example
 ARG PASSWORD
   # Noncompliant
-RUN wget --user=guest --password="$PASSWORD" https://example.com
+RUN wget --user=guest --password="$PASSWORD" https://example2.com
