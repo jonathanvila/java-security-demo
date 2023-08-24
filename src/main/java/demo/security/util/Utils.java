@@ -13,7 +13,9 @@ import java.nio.file.Paths;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Utils {
 
@@ -40,15 +42,14 @@ public class Utils {
     }
 
     public void demo() {
-        String element = getElement("solong");
+        List<String> mylist = List.of("a", "b", "c");
+        String element;
+        try {
+            element = mylist.get(4);
+        } catch (Exception e) {
+            element = null;
+        }
         System.out.println(element.trim());
     }
 
-    public String getElement(String key) {
-        HashMap<String,String> map = new HashMap<>();
-        map.put("Hello", "hola");
-        map.put("Bye", "adios");
-
-        return map.get(key);
-    }
 }
