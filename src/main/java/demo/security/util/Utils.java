@@ -13,6 +13,7 @@ import java.nio.file.Paths;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 
 public class Utils {
 
@@ -36,5 +37,18 @@ public class Utils {
         ScriptEngineManager manager = new ScriptEngineManager();
         ScriptEngine engine = manager.getEngineByName("JavaScript");
         engine.eval(input);
+    }
+
+    public void demo() {
+        String element = getElement("solong");
+        System.out.println(element.trim());
+    }
+
+    public String getElement(String key) {
+        HashMap<String,String> map = new HashMap<>();
+        map.put("Hello", "hola");
+        map.put("Bye", "adios");
+
+        return map.get(key);
     }
 }
