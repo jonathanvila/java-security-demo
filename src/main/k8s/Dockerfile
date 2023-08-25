@@ -1,4 +1,6 @@
-FROM example
+from ubuntu:22.04 aS jammy
+# TODO
 ARG PASSWORD
-  # Noncompliant
+# TODO another one
+# Noncompliant
 RUN wget --user=guest --password="$PASSWORD" https://example2.com
