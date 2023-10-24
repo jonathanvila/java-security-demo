@@ -10,7 +10,7 @@ public class DBUtils {
     Connection connection;
     public DBUtils() throws SQLException {
         connection = DriverManager.getConnection(
-                "mYJDBCUrl", "myJDBCUser", "myJDBCPasswd");
+                "mYJDBCUrl", "myJDBCUser", "hardcodedJDBCPasswd");
     }
 
     public List<String> findUsers(String user) throws Exception {
@@ -32,6 +32,7 @@ public class DBUtils {
         while (resultSet.next()){
             items.add(resultSet.getString(0));
         }
-        return items;
+        var elementos=items;
+        return elementos;
     }
 }
