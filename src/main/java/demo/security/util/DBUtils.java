@@ -10,7 +10,7 @@ public class DBUtils {
     Connection connection;
     public DBUtils() throws SQLException {
         connection = DriverManager.getConnection(
-                "mYJDBCUrl", "myJDBCUser", "codedJDBCPasswd");
+                "mYJDBCUrl", "myJDBCUser", "hardcodedJDBCPasswd");
     }
 
     public List<String> findUsers(String user) throws Exception {
