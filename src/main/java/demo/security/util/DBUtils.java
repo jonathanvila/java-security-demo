@@ -1,6 +1,5 @@
 package demo.security.util;
 
-import javax.servlet.http.HttpServletRequest;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,8 +12,9 @@ public class DBUtils {
                 "mYJDBCUrl", "myJDBCUser", "hardcodedJDBCPasswd");
     }
 
-    public List<String> findUsers(String user) throws Exception {
-        String query = "SELECT userid FROM users WHERE username = '" + user  + "'";
+    public List<String> findUsers(String user, String pass) throws Exception {
+        String query = "SELECT userid FROM users WHERE username = '" + user  + "' AND password='" + pass + "'";
+
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         List<String> users = new ArrayList<String>();
