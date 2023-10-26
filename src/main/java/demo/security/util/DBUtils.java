@@ -13,21 +13,13 @@ public class DBUtils {
     }
 
     public List<String> findUsers(String user, String pass) throws Exception {
-//        String query = "SELECT userid FROM users WHERE username = '" + user  + "' AND password='" + pass + "'";
-        String query = "SELECT userid FROM users WHERE user = ? AND pass = ?";
+        String query = "SELECT userid FROM users WHERE username = '" + user  + "' AND password='" + pass + "'";
 
-//        Statement statement = connection.createStatement();
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
         List<String> users = new ArrayList<String>();
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, user);
-            statement.setString(2, pass);
-
-            ResultSet resultSet = statement.executeQuery(query);
-
-
-            while (resultSet.next()) {
-                users.add(resultSet.getString(0));
-            }
+        while (resultSet.next()){
+            users.add(resultSet.getString(0));
         }
         return users;
     }
