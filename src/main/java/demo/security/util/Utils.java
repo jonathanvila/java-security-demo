@@ -35,6 +35,10 @@ public class Utils {
         FileUtils.forceDelete(file);
     }
 
+    public static void doNothing() {
+        // TODO document why this method is empty
+    }
+
     public static void executeJs(String input) throws ScriptException {
         ScriptEngineManager manager = new ScriptEngineManager();
         ScriptEngine engine = manager.getEngineByName("JavaScript");
