@@ -13,6 +13,9 @@ import java.nio.file.Paths;
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Utils {
 
@@ -32,9 +35,25 @@ public class Utils {
         FileUtils.forceDelete(file);
     }
 
+    public static void doNothing() {
+        // TODO document why this method is empty
+    }
+
     public static void executeJs(String input) throws ScriptException {
         ScriptEngineManager manager = new ScriptEngineManager();
         ScriptEngine engine = manager.getEngineByName("JavaScript");
         engine.eval(input);
     }
+
+    public void demo() {
+        List<String> mylist = List.of("a", "b", "c");
+        String element;
+        try {
+            element = mylist.get(4);
+        } catch (Exception e) {
+            element = null;
+        }
+        System.out.println(element.trim());
+    }
+
 }
