@@ -14,10 +14,10 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user = request.getParameter("username");
-        String query = "SELECT userid FROM users WHERE username = '" + user  + "'";
+        String pass = request.getParameter("password");
         try {
             DBUtils db = new DBUtils();
-            List<String> users = db.findUsers(user);
+            List<String> users = db.findUsers(user, pass);
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             users.forEach((result) -> {
