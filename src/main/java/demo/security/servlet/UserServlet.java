@@ -17,7 +17,7 @@ public class UserServlet extends HttpServlet {
         String pass = request.getParameter("password");
         try {
             DBUtils db = new DBUtils();
-            List<String> users = db.findUsers(user, pass);
+            List<String> users = db.findUsers(user);
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             users.forEach((result) -> {
