@@ -37,6 +37,18 @@ public class DBUtils {
         }
     }
 
+    public void newConnect() throws SQLException {
+        connection = DriverManager.getConnection(
+                "mYJDBCUrl", "myJDBCUser", "myJDBCPasswd");
+
+        ArrayList<String> list = new ArrayList<>();
+        list.add("hola");
+        for (var it = list.listIterator(list.size()); it.hasPrevious();) {
+            var element = it.previous();
+            System.out.println(element);
+        }
+    }
+
     public List<String> findUsers(String user) throws Exception {
         String query = "SELECT userid FROM users WHERE username = '" + user + "'";
         Statement statement = connection.createStatement();
