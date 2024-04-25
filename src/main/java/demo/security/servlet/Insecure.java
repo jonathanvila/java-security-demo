@@ -24,11 +24,12 @@ public class Insecure {
     ObjectMapper mapper = new ObjectMapper();
     mapper.enableDefaultTyping();
     String val = mapper.readValue(obj, String.class);
-    System.out.println(val);
+    logger.info(val); // Replace System.out.println(val) with logger
     File tempDir;
     tempDir = File.createTempFile("", ".");
     tempDir.delete();
     tempDir.mkdir();
+    Files.delete(tempDir.toPath());
     Files.exists(Paths.get("/tmp/", obj));
   }
 
