@@ -2,9 +2,12 @@ package demo.security.util;
 
 import demo.security.servlet.FileServlet;
 
+import javax.naming.AuthenticationException;
+import java.io.Serializable;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ThreadFactory;
+import java.util.stream.Collectors;
 
 public class DBUtils {
     Object value;
@@ -60,7 +63,6 @@ public class DBUtils {
         sumNumbers(100);
         return users;
     }
-
     public List<String> findItem(String itemId) throws Exception {
         String query = "SELECT item_id FROM items WHERE item_id = '" + itemId + "'";
         Statement statement = connection.createStatement();
@@ -78,12 +80,6 @@ public class DBUtils {
             count = 0;
             for (int i = 2; i <= number / 2; i++) {
                 if (number % i == 0) {
-                    for (int m = 2; i <= number / 2; i++) {
-                        if (number % m == 0) {
-                            count++;
-                            break;
-                        }
-                    }
                     count++;
                     break;
                 }
@@ -93,5 +89,61 @@ public class DBUtils {
             }
         }
         System.out.println("The Sum of numbers is: " + sum);
+    }
+
+    public void threads() {
+        Thread.Builder.OfVirtual virtual = Thread.ofVirtual();
+
+        var thread = virtual.start(() -> {
+          var a=10;
+          System.out.println(a);
+        });
+        thread.setDaemon(false);
+        thread.setPriority(10);
+        thread.getThreadGroup();
+        System.out.print(thread.getName());
+
+        Runnable printThread = () -> System.out.println(Thread.currentThread());
+
+        Thread virtualThread = Thread.ofVirtual().factory().newThread(printThread);
+
+        ThreadFactory kernelThreadFactory = Thread.ofPlatform().factory();
+        Thread kernelThread = kernelThreadFactory.newThread(printThread);
+
+        virtualThread.setPriority(Thread.MIN_PRIORITY);
+        virtualThread.start();
+        kernelThread.start();
+
+        var kernelThread3 = new Thread(printThread);
+        kernelThread3.setPriority(0);
+        kernelThread3.setDaemon(false);
+        System.out.println(STR."Group:\{kernelThread3.getThreadGroup()}");
+        kernelThread3.start();
+    }
+
+    String guardedCaseSwitch(Object obj) {
+        return switch (obj) {
+            case String s when !s.isEmpty() -> String.format("String %s", s);
+            case Integer i when i > 0 -> String.format("int %d", i);
+            default        -> obj.toString();
+        };
+    }
+
+    public double calculateAverage(Collection<Integer> collection) {
+        int suma= 10;  
+
+        int sum = 0;
+        for (Integer num : collection) {
+            sum += num;
+        }
+        return (double) sum / collection.size();
+    }
+
+    public double calculateAverageManual(Collection<Integer> collection) {
+        int suma = 10;
+        return collection.stream().collect(Collectors.teeing(
+                Collectors.summingDouble(i -> i),
+                Collectors.counting(),
+                (sum, count) -> sum / count));
     }
 }

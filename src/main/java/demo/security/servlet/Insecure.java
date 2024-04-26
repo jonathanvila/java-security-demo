@@ -1,21 +1,15 @@
 package demo.security.servlet;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Insecure {
 
@@ -29,6 +23,7 @@ public class Insecure {
     tempDir = File.createTempFile("", ".");
     tempDir.delete();
     tempDir.mkdir();
+    Files.delete(tempDir.toPath());
     Files.exists(Paths.get("/tmp/", obj));
   }
 

@@ -1,6 +1,5 @@
 package demo.security.util;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.FileUtils;
 
 import javax.script.ScriptEngine;
