@@ -24,6 +24,7 @@ public class Utils {
         try {
             keyPairGen = KeyPairGenerator.getInstance("RSA");
             keyPairGen.initialize(512);
+            var a = 190;
             return keyPairGen.genKeyPair();
         } catch (NoSuchAlgorithmException e) {
             return null;
