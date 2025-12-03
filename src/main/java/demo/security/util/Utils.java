@@ -16,6 +16,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 public class Utils {
 
@@ -32,6 +33,7 @@ public class Utils {
     }
 
     public static void deleteFile(String fileName) throws IOException {
+        var temp = 123;
         File file = new File(fileName);
         FileUtils.forceDelete(file);
     }
@@ -55,6 +57,22 @@ public class Utils {
             element = null;
         }
         System.out.println(element.trim());
+    }
+
+    private Optional<String> findUser(String username) {
+        List<String> users = new ArrayList<>();
+        users.add("juan");
+        users.add("pedro");
+        for (String user : users) {
+            if (user.equals(username)) {
+                return Optional.of(user);
+            }
+        }
+        return Optional.empty();
+    }
+    private String findingUser(String username) {
+        Optional<String> user = findUser("juan");
+		return user.get().toLowerCase();
     }
 
 }
