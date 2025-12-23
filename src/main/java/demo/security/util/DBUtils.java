@@ -2,6 +2,8 @@ package demo.security.util;
 
 import demo.security.servlet.FileServlet;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,6 @@ public class DBUtils {
     Object value;
 
     Connection connection;
-
 
     /**
      * The following code shows how to use {@code Optional.isPresent}:
@@ -94,4 +95,40 @@ public class DBUtils {
         }
         System.out.println("The Sum of numbers is: " + sum);
     }
+
+    /**
+     * Connects to the given external URL 1000 times using threads.
+     * Each thread performs a single connection and logs the response code.
+     *
+     * @param urlString the external URL to connect to
+     */
+    public static void connectToExternalUrlConcurrently(String urlString) {
+        final int THREAD_COUNT = 1000;
+        Thread[] threads = new Thread[THREAD_COUNT];
+        for (int i = 0; i < THREAD_COUNT; i++) {
+            threads[i] = Thread.ofVirtual().unstarted(() -> {
+                try {
+                    URL url = new URL(urlString);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setConnectTimeout(5000);
+                    conn.setReadTimeout(5000);
+                    int responseCode = conn.getResponseCode();
+                    conn.disconnect();
+                } catch (Exception e) {
+                }
+            });
+        }
+        for (Thread thread : threads) {
+            thread.start();
+        }
+        for (Thread thread : threads) {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+
 }
