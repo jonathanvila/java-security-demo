@@ -63,6 +63,7 @@ public class DBUtils {
     }
 
     public List<String> findItem(String itemId) throws Exception {
+        //TODO let's do something
         String query = "SELECT item_id FROM items WHERE item_id = '" + itemId + "'";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
@@ -94,5 +95,66 @@ public class DBUtils {
             }
         }
         System.out.println("The Sum of numbers is: " + sum);
+    }
+
+    /**
+     * Computes the sum of all prime numbers up to max using Java Streams.
+     * @param max the upper bound
+     * @return the sum of all prime numbers up to max
+     */
+    public static int sumNumbersStream(int max) {
+        return java.util.stream.IntStream.rangeClosed(2, max)
+            .filter(n -> java.util.stream.IntStream.rangeClosed(2, (int) Math.sqrt(n))
+                .allMatch(i -> n % i != 0))
+            .sum();
+    }
+
+
+    /**
+     * Returns the sum of all prime numbers up to max using the original logic (without printing).
+     * @param max the upper bound
+     * @return the sum of all prime numbers up to max
+     */
+    public static int getSumNumbers(int max) {
+        int count, sum = 0;
+        for (int number = 1; number <= max; number++) {
+            count = 0;
+            for (int i = 2; i <= number / 2; i++) {
+                if (number % i == 0) {
+                    for (int m = 2; i <= number / 2; i++) {
+                        if (number % m == 0) {
+                            count++;
+                            break;
+                        }
+                    }
+                    count++;
+                    break;
+                }
+            }
+            if (count == 0 && number != 1) {
+                sum = sum + number;
+            }
+        }
+        return sum;
+    }
+
+    public void sumNumbersRefactored(int max) {
+        int sum = 0;
+        for (int number = 2; number <= max; number++) {
+            if (isPrime(number)) {
+                sum += number;
+            }
+        }
+        System.out.println("The Sum of numbers is: " + sum);
+    }
+
+    private boolean isPrime(int number) {
+        if (number < 2) return false;
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
