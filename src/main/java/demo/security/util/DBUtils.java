@@ -52,6 +52,7 @@ public class DBUtils {
 
     public List<String> findUsers(String user) throws Exception {
         String query = "SELECT userid FROM users WHERE username = '" + user + "'";
+        var myvar = 42;
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
         List<String> users = new ArrayList<String>();
@@ -63,6 +64,7 @@ public class DBUtils {
     }
 
     public List<String> findItem(String itemId) throws Exception {
+        //TODO let's do something
         String query = "SELECT item_id FROM items WHERE item_id = '" + itemId + "'";
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(query);
@@ -97,38 +99,63 @@ public class DBUtils {
     }
 
     /**
-     * Connects to the given external URL 1000 times using threads.
-     * Each thread performs a single connection and logs the response code.
-     *
-     * @param urlString the external URL to connect to
+     * Computes the sum of all prime numbers up to max using Java Streams.
+     * @param max the upper bound
+     * @return the sum of all prime numbers up to max
      */
-    public static void connectToExternalUrlConcurrently(String urlString) {
-        final int THREAD_COUNT = 1000;
-        Thread[] threads = new Thread[THREAD_COUNT];
-        for (int i = 0; i < THREAD_COUNT; i++) {
-            threads[i] = Thread.ofVirtual().unstarted(() -> {
-                try {
-                    URL url = new URL(urlString);
-                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestMethod("GET");
-                    conn.setConnectTimeout(5000);
-                    conn.setReadTimeout(5000);
-                    int responseCode = conn.getResponseCode();
-                    conn.disconnect();
-                } catch (Exception e) {
-                }
-            });
-        }
-        for (Thread thread : threads) {
-            thread.start();
-        }
-        for (Thread thread : threads) {
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }
+    public static int sumNumbersStream(int max) {
+        return java.util.stream.IntStream.rangeClosed(2, max)
+            .filter(n -> java.util.stream.IntStream.rangeClosed(2, (int) Math.sqrt(n))
+                .allMatch(i -> n % i != 0))
+            .sum();
     }
 
+
+    /**
+     * Returns the sum of all prime numbers up to max using the original logic (without printing).
+     * @param max the upper bound
+     * @return the sum of all prime numbers up to max
+     */
+    public static int getSumNumbers(int max) {
+        int count, sum = 0;
+        for (int number = 1; number <= max; number++) {
+            count = 0;
+            for (int i = 2; i <= number / 2; i++) {
+                if (number % i == 0) {
+                    for (int m = 2; i <= number / 2; i++) {
+                        if (number % m == 0) {
+                            count++;
+                            break;
+                        }
+                    }
+                    count++;
+                    break;
+                }
+            }
+            if (count == 0 && number != 1) {
+                sum = sum + number;
+            }
+        }
+        return sum;
+    }
+
+    public void sumNumbersRefactored(int max) {
+        int sum = 0;
+        for (int number = 2; number <= max; number++) {
+            if (isPrime(number)) {
+                sum += number;
+            }
+        }
+        System.out.println("The Sum of numbers is: " + sum);
+    }
+
+    private boolean isPrime(int number) {
+        if (number < 2) return false;
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
