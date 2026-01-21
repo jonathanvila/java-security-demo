@@ -13,6 +13,7 @@ public class SampleBean {
 		var result = "some result";
 		var a = 10;
 		var b = 20;
+		var c = a + b;
 		return languageToLocaleConverter.toString();
 	}
 
