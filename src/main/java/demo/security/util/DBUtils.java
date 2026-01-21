@@ -2,6 +2,8 @@ package demo.security.util;
 
 import demo.security.servlet.FileServlet;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,6 @@ public class DBUtils {
     Object value;
 
     Connection connection;
-
 
     /**
      * The following code shows how to use {@code Optional.isPresent}:
