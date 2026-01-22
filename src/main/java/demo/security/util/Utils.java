@@ -47,6 +47,7 @@ public class Utils {
 
     public void demo() {
         List<String> mylist = List.of("a", "b", "c");
+        List<String> mylist2 = new ArrayList<>();
         String element;
         try {
             element = mylist.get(4);
