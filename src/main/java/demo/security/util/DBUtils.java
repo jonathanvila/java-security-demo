@@ -39,8 +39,9 @@ public class DBUtils {
     }
 
     public void newConnect() throws SQLException {
+        String myJDBCPasswd = "myJDBCPasswd";
         connection = DriverManager.getConnection(
-                "mYJDBCUrl", "myJDBCUser", "myJDBCPasswd");
+                "mYJDBCUrl", "myJDBCUser", myJDBCPasswd);
 
         ArrayList<String> list = new ArrayList<>();
         list.add("hola");
