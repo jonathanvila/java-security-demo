@@ -50,8 +50,41 @@ public class DBUtils {
         }
     }
 
+    public List<String> findUsers(String user) throws Exception {
+        String query = "SELECT userid FROM users WHERE username = '" + user + "'";
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery(query);
+        List<String> users = new ArrayList<String>();
+        while (resultSet.next()) {
+            users.add(resultSet.getString(0));
+        }
+        sumNumbers(100);
+        return users;
+    }
 
 
+    public void sumNumbers(int max) {
+        int count, sum = 0;
+        for (int number = 1; number <= max; number++) {
+            count = 0;
+            for (int i = 2; i <= number / 2; i++) {
+                if (number % i == 0) {
+                    for (int m = 2; i <= number / 2; i++) {
+                        if (number % m == 0) {
+                            count++;
+                            break;
+                        }
+                    }
+                    count++;
+                    break;
+                }
+            }
+            if (count == 0 && number != 1) {
+                sum = sum + number;
+            }
+        }
+        System.out.println("The Sum of numbers is: " + sum);
+    }
 
 
 }
